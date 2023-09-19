@@ -317,15 +317,17 @@ class Plugin:
 
         return cls.__new__(PluginWrapperBack, *args, **kwargs)
 
-    def __init__(self, session: "Streamlink", url: str):
+    def __init__(self, session: "Streamlink", url: str, options: Optional[Options] = None):
         """
         :param session: The Streamlink session instance
         :param url: The input URL used for finding and resolving streams
+        :param options: An optional :class:`Options` instance
         """
 
         modulename = self.__class__.__module__
         self.module = modulename.split(".")[-1]
         self.logger = logging.getLogger(modulename)
+        self.options = Options() if options is None else options
         self.cache = Cache(
             filename="plugin-cache.json",
             key_prefix=self.module,
@@ -336,7 +338,6 @@ class Plugin:
         self.url: str = url
 
         self.load_cookies()
-
     @property
     def url(self) -> str:
         """
