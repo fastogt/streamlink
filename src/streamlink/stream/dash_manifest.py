@@ -15,7 +15,6 @@ from typing import (
     Dict,
     Iterator,
     List,
-    Literal,
     Optional,
     Sequence,
     Set,
@@ -107,7 +106,7 @@ class MPDParsers:
         return v.lower() == "true"
 
     @staticmethod
-    def type(mpdtype: Literal["static", "dynamic"]) -> Literal["static", "dynamic"]:
+    def type(mpdtype):
         if mpdtype not in ("static", "dynamic"):
             raise MPDParsingError("@type must be static or dynamic")
         return mpdtype

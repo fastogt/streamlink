@@ -1,6 +1,6 @@
 import re
 from datetime import datetime, timezone, tzinfo
-from typing import Callable, Literal, Union, overload
+from typing import Callable, Union, overload
 
 from isodate import LOCAL, parse_datetime  # type: ignore[import]
 
@@ -74,11 +74,11 @@ _re_hms_hms = re.compile(
 
 
 @overload
-def _hours_minutes_seconds(as_float: Literal[False]) -> Callable[[str], int]: ...  # pragma: no cover
+def _hours_minutes_seconds(as_float) -> Callable[[str], int]: ...  # pragma: no cover
 
 
 @overload
-def _hours_minutes_seconds(as_float: Literal[True]) -> Callable[[str], float]: ...  # pragma: no cover
+def _hours_minutes_seconds(as_float) -> Callable[[str], float]: ...  # pragma: no cover
 
 
 def _hours_minutes_seconds(as_float: bool = True) -> Callable[[str], Union[float, int]]:

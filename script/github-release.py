@@ -10,7 +10,7 @@ from dataclasses import dataclass
 from os import getenv
 from pathlib import Path
 from pprint import pformat
-from typing import IO, Any, Literal, NewType, Optional
+from typing import IO, Any, NewType, Optional
 
 # noinspection PyPackageRequirements
 import jinja2
@@ -182,7 +182,7 @@ class GitHubAPI:
     def call(
         self,
         host: str = "api.github.com",
-        method: Literal["GET", "POST", "PATCH"] = "GET",
+        method = "GET",
         endpoint: str = "/",
         headers: Optional[dict[str, Any]] = None,
         raise_failure: bool = True,
