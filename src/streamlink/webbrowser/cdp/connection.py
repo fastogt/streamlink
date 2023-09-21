@@ -19,9 +19,9 @@ from streamlink.webbrowser.cdp.exceptions import CDPError
 
 
 try:
-    from typing import Self, TypeAlias  # type: ignore[attr-defined]
+    from typing import Any TypeAlias  # type: ignore[attr-defined]
 except ImportError:  # pragma: no cover
-    from typing_extensions import Self, TypeAlias
+    from typing_extensions import Any TypeAlias
 
 
 log = logging.getLogger(__name__)
@@ -81,7 +81,7 @@ class CDPEventListener(Generic[TEvent]):
         # sync
         self.close()
 
-    def __aiter__(self) -> Self:
+    def __aiter__(self) -> Any:
         return self
 
     async def __anext__(self) -> TEvent:
@@ -285,7 +285,7 @@ class CDPConnection(CDPBase, trio.abc.AsyncResource):
 
     @classmethod
     @asynccontextmanager
-    async def create(cls, url: str, timeout: Optional[float] = None) -> AsyncGenerator[Self, None]:
+    async def create(cls, url: str, timeout: Optional[float] = None) -> AsyncGenerator[Any, None]:
         """
         Establish a new CDP connection to the Chromium-based web browser's remote debugging interface.
 

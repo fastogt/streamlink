@@ -14,9 +14,9 @@ from streamlink.webbrowser.chromium import ChromiumWebbrowser
 
 
 try:
-    from typing import Self, TypeAlias  # type: ignore[attr-defined]
+    from typing import Any, TypeAlias  # type: ignore[attr-defined]
 except ImportError:  # pragma: no cover
-    from typing_extensions import Self, TypeAlias
+    from typing_extensions import Any, TypeAlias
 
 
 TRequestHandlerCallable: TypeAlias = Callable[["CDPClientSession", fetch.RequestPaused], Awaitable]
@@ -94,7 +94,7 @@ class CDPClient:
     def launch(
         cls,
         session: Streamlink,
-        runner: Callable[[Self], Coroutine],
+        runner: Callable[[Any], Coroutine],
         executable: Optional[str] = None,
         timeout: Optional[float] = None,
         cdp_host: Optional[str] = None,
@@ -179,7 +179,7 @@ class CDPClient:
         cdp_port: Optional[int] = None,
         cdp_timeout: Optional[float] = None,
         headless: bool = True,
-    ) -> AsyncGenerator[Self, None]:
+    ) -> AsyncGenerator[Any, None]:
         webbrowser = ChromiumWebbrowser(executable=executable, host=cdp_host, port=cdp_port, headless=headless)
         nursery: trio.Nursery
         async with webbrowser.launch(timeout=timeout) as nursery:

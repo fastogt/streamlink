@@ -13,9 +13,9 @@ from streamlink.logger import ALL, StreamlinkLogger
 
 
 try:
-    from typing import Self  # type: ignore[attr-defined]
+    from typing import Any  # type: ignore[attr-defined]
 except ImportError:  # pragma: no cover
-    from typing_extensions import Self
+    from typing_extensions import Any
 
 
 log: StreamlinkLogger = logging.getLogger(__name__)  # type: ignore[assignment]
@@ -185,7 +185,7 @@ class M3U8ParserMeta(type):
 
 
 class M3U8Parser(metaclass=M3U8ParserMeta):
-    _TAGS: ClassVar[Mapping[str, Callable[[Self, str], None]]]
+    _TAGS: ClassVar[Mapping[str, Callable[[Any, str], None]]]
 
     _extinf_re = re.compile(r"(?P<duration>\d+(\.\d+)?)(,(?P<title>.+))?")
     _attr_re = re.compile(r"""
