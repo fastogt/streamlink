@@ -45,7 +45,7 @@ class WWENetwork(Plugin):
     live_url = "https://dce-frontoffice.imggaming.com/api/v2/event/live"
     login_url = "https://dce-frontoffice.imggaming.com/api/v2/login"
 
-    API_KEY = "cca51ea0-7837-40df-a055-75eb6347b2e7"
+    API_KEY = "857a1e5d-e35e-4fdf-805b-a87b6f8364bf"
 
     customer_id = 16
 
